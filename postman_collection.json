@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "946af843-5db5-41c3-9210-49650c9b1d44",
+		"name": "blockchain-banking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27659715"
+	},
+	"item": [
+		{
+			"name": "createAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"osiejmgceesk\",\n    \"accountHolderName\": \"Devid Hasselhoff\",\n    \"accountType\": \"CREDIT\",\n    \"balance\": 80000,\n    \"currency\": \"EUR\",\n    \"accountStatus\": \"ACTIVE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/1",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deposit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/1/deposit",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"1",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "withdraw",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/2/withdraw",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"2",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAccount",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/1/hold",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"1",
+						"hold"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "holdAccount",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/2/delete",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"2",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activateAccount",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/1/activate",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"1",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromAccountId\": 2,\n    \"toAccountId\": 1,\n    \"amount\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/transfer",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_blockchain-banking}}/account/2/transactions",
+					"host": [
+						"{{base_blockchain-banking}}"
+					],
+					"path": [
+						"account",
+						"2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_blockchain-banking",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

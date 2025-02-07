@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+    postgres:
+        image: postgres:latest
+        container_name: postgres
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
+            POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+            POSTGRES_DB: 'postgres'
+        volumes:
+            - "./volumes/postgres/data:/var/lib/postgresql/data"
+        networks:
+            - ${GLOBAL_NETWORK:-service}
+
+    blockchain-banking:
+        image: anatolydudko/blockchain-banking-in-action:3.2.5
+        container_name: blockchain-banking
+        ports:
+            - "8080:8080"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+            DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
+            DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+        depends_on:
+            - postgres
+        networks:
+            - ${GLOBAL_NETWORK:-service}
+
+networks:
+    service:
+        driver: bridge
